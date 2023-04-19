@@ -31,6 +31,26 @@
   <script type="text/javascript" src="static/js/config.js"></script>
   <!-- Our JavaScript -->
   <script type="text/javascript" src="static/js/logic.js"></script>
+
+  <script type="text/javascript">
+    let legend = L.control({
+      position: "bottomright"
+    });
+
+    legend.onAdd = function () {
+      let div = L.DomUtil.create("div", "info legend");
+      let grades = [-10, 10, 30, 50, 70, 90];
+      let colors = ["#871008", "#878108", "#08874c", "#086987", "#100887", "#500887"];
+      for (let i = 0; i < grades.length; i++) {
+        div.innerHTML += "<i style='background: " + colors[i] + "'></i> " +
+          grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
+      }
+      return div;
+    };
+
+    legend.addTo(map);
+  </script>
 </body>
 
 </html>
+
